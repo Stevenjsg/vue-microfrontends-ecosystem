@@ -45,16 +45,16 @@ graph LR
     Root --> Packages[📂 packages/]
     
     subgraph "Aplicaciones (Vite + Vue 3)"
-        Apps --> Shell[Shell (Puerto 5000)]
-        Apps --> Dash[Dashboard (Puerto 5001)]
-        Apps --> CMS[CMS (Puerto 5002)]
-        Apps --> Kanban[Kanban (Puerto 5003)]
+        Apps --> Shell["Shell (Puerto 5000)"]
+        Apps --> Dash["Dashboard (Puerto 5001)"]
+        Apps --> CMS["CMS (Puerto 5002)"]
+        Apps --> Kanban["Kanban (Puerto 5003)"]
     end
     
     subgraph "Librerías Compartidas"
-        Packages --> UIKit[@repo/ui-kit]
-        Packages --> Utils[@repo/utils]
-        Packages --> TSConfig[Configuración TS]
+        Packages --> UIKit["@repo/ui-kit"]
+        Packages --> Utils["@repo/utils"]
+        Packages --> TSConfig["Configuración TS"]
     end
 
     style Root fill:#ef4444,stroke:#333,color:white
