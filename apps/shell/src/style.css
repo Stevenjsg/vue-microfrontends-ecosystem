@@ -1,2 +1,4 @@
 @import "tailwindcss";
-@config "../tailwind.config.js";
+
+/* Solo si es necesario para el proyecto específico (como en Shell o Dashboard) */
+@source "../../../packages/ui-kit";
