@@ -1,32 +1,33 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import {setupMsg} from '@repo/ui-kit'
-</script>
- 
-<template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <p>{{ setupMsg }}</p>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
-</template>
+import { defineAsyncComponent } from 'vue';
+import { setupMsg, MyButton } from '@repo/ui-kit/src/index.ts';
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+const DashboardWidget = defineAsyncComponent(() => 
+  import('dashboard/Widget')
+);
+</script>
+
+<template>
+  <div class="w-full p-4 space-y-8">
+    
+    <div class="p-6 bg-slate-100 rounded-lg">
+      <h1 class="text-2xl font-bold mb-4">{{ setupMsg }}</h1>
+      <MyButton label="Botón del UI Kit (Local)" />
+    </div>
+
+    <div class="p-6 border border-dashed border-gray-400 rounded-lg">
+      <h2 class="mb-4 text-gray-500">👇 Esto viene via red desde el Dashboard 👇</h2>
+      
+      <Suspense>
+        <template #default>
+          <DashboardWidget />
+        </template>
+        <template #fallback>
+          <div>Cargando microfrontend...</div>
+        </template>
+      </Suspense>
+      
+    </div>
+
+  </div>
+</template>
